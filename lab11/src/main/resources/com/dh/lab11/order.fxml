@@ -22,21 +22,21 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="placeOrderFileBtn" mnemonicParsing="false" text="Place Order" />
-                  <MenuItem fx:id="clearOrderFileBtn" mnemonicParsing="false" text="Clear Order" />
-              <MenuItem fx:id="exitFileBtn" mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="placeOrderFileBtn" mnemonicParsing="false" onAction="#onActionPlaceOrder" text="Place Order" />
+                  <MenuItem fx:id="clearOrderFileBtn" mnemonicParsing="false" onAction="#onActionClearOrder" text="Clear Order" />
+              <MenuItem fx:id="exitFileBtn" mnemonicParsing="false" onAction="#onActionExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem fx:id="clearEntreeBtn" mnemonicParsing="false" text="Clear Entrée" />
-                  <MenuItem fx:id="clearDrinkBtn" mnemonicParsing="false" text="Clear Drink" />
-                  <MenuItem fx:id="clearSpecialRequestBtn" mnemonicParsing="false" text="Clear Special Request" />
+                  <MenuItem fx:id="clearEntreeBtn" mnemonicParsing="false" onAction="#clearEntree" text="Clear Entrée" />
+                  <MenuItem fx:id="clearDrinkBtn" mnemonicParsing="false" onAction="#clearDrink" text="Clear Drink" />
+                  <MenuItem fx:id="clearSpecialRequestBtn" mnemonicParsing="false" onAction="#clearSpecialRequest" text="Clear Special Request" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="aboutBtn" mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="aboutBtn" mnemonicParsing="false" onAction="#onActionAbout" text="About" />
             </items>
           </Menu>
         </menus>
@@ -71,7 +71,7 @@
                   </Label>
                   <VBox prefHeight="101.0" prefWidth="211.0" spacing="5.0" style="-fx-border-color: #c9c9c9;">
                      <children>
-                        <RadioButton fx:id="coffeeRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Coffee">
+                        <RadioButton fx:id="coffeeRadioBtn" mnemonicParsing="false" prefWidth="250.0" selected="true" text="Coffee">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -148,8 +148,8 @@
                   </VBox>
                   <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="10.0">
                      <children>
-                        <Button fx:id="placeOrderBtn" mnemonicParsing="false" text="Place Order" />
-                        <Button fx:id="clearOrderBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Clear Order" />
+                        <Button fx:id="placeOrderBtn" mnemonicParsing="false" onAction="#onActionPlaceOrder" text="Place Order" />
+                        <Button fx:id="clearOrderBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionClearOrder" text="Clear Order" />
                      </children>
                   </HBox>
                </children>

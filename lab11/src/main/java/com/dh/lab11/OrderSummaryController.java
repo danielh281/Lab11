@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.dh.lab11;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +14,7 @@ import javafx.scene.control.Label;
 /**
  * FXML Controller class
  *
- * @author 2588731
+ * @author Daniel Haddadeen (2588731)
  */
 public class OrderSummaryController implements Initializable {
 
@@ -36,6 +35,8 @@ public class OrderSummaryController implements Initializable {
     @FXML
     private Button closeBtn;
 
+    private OrderController orderController;
+    
     /**
      * Initializes the controller class.
      */
@@ -45,7 +46,12 @@ public class OrderSummaryController implements Initializable {
     }    
 
     @FXML
-    private void onActionClose(ActionEvent event) {
+    private void onActionClose(ActionEvent event) throws IOException {
+        Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
     }
     
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
+    }
 }
