@@ -47,7 +47,7 @@ public class OrderSummaryController implements Initializable {
 
     @FXML
     private void onActionClose(ActionEvent event) throws IOException {
-        if (!(orderController.orderSummaryStage == null)) {
+        if (orderController.orderSummaryStage != null) {
             orderController.orderSummaryStage.close();
             orderController.orderSummaryStage = null;
         }
@@ -58,8 +58,6 @@ public class OrderSummaryController implements Initializable {
     }
     
     public void populateOrderSummary() {
-        System.out.println(orderController);
-        
         String entree = (orderController.entree != null) ? orderController.entree : "";
         double entreePrice = (Config.entreePrices.get(entree) != null) ? Config.entreePrices.get(entree) : 0;
         
@@ -75,6 +73,8 @@ public class OrderSummaryController implements Initializable {
         drinkPriceLabel.setText(String.format("$%.2f", drinkPrice));
         
         waterLabel.setText(water ? "Yes" : "No");
+        
+        specialRequestLabel.setText(orderController.specialRequest);
         
         totalPriceLabel.setText(String.format("$%.2f", entreePrice + drinkPrice));
     }

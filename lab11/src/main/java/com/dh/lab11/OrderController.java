@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -93,7 +94,11 @@ public class OrderController implements Initializable {
         }
         
         drinkToggleGroup.selectedToggleProperty().addListener((ov) -> {
-            drink = (String) drinkToggleGroup.getSelectedToggle().getUserData();
+            Toggle selectedToggle = drinkToggleGroup.getSelectedToggle();
+            
+            if (selectedToggle != null) {
+                drink = (String) drinkToggleGroup.getSelectedToggle().getUserData();
+            }
         });
         
         // Listen for entree selection
