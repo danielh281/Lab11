@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dh.lab11.OrderController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="placeOrderFileBtn" mnemonicParsing="false" text="Place Order" />
+                  <MenuItem fx:id="clearOrderFileBtn" mnemonicParsing="false" text="Clear Order" />
+              <MenuItem fx:id="exitFileBtn" mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem fx:id="clearEntreeBtn" mnemonicParsing="false" text="Clear Entrée" />
+                  <MenuItem fx:id="clearDrinkBtn" mnemonicParsing="false" text="Clear Drink" />
+                  <MenuItem fx:id="clearSpecialRequestBtn" mnemonicParsing="false" text="Clear Special Request" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutBtn" mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="137.0" spacing="10.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="178.0">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="178.0" style="-fx-background-color: #f3f3f3; -fx-border-color: #c9c9c9; -fx-border-radius: 4 0 0 0; -fx-font-weight: bold;" text="Entrée Selection">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="6.0" top="2.0" />
+                     </padding>
+                  </Label>
+                  <ListView fx:id="entreeListView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="97.0" prefWidth="178.0" />
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="229.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" prefHeight="6.0" style="-fx-background-color: #e8e8e8; -fx-border-color: #c9c9c9; -fx-border-radius: 0 4 0 0; -fx-font-weight: bold;" text="Drink Selection">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="8.0" left="6.0" top="2.0" />
+                     </padding>
+                  </Label>
+                  <VBox prefHeight="101.0" prefWidth="211.0" spacing="5.0" style="-fx-border-color: #c9c9c9;">
+                     <children>
+                        <RadioButton fx:id="coffeeRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Coffee">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="drinkToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="teaRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Tea" toggleGroup="$drinkToggleGroup" />
+                        <RadioButton fx:id="sodaRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Soda" toggleGroup="$drinkToggleGroup" />
+                        <RadioButton fx:id="juiceRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Juice" toggleGroup="$drinkToggleGroup" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </HBox>
+      <CheckBox fx:id="waterCheckBox" mnemonicParsing="false" text="Request Free Water">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin></CheckBox>
+      <Pane maxWidth="1.7976931348623157E308" style="-fx-background-color: #ebe8e8; -fx-border-color: #c9c9c9; -fx-border-radius: 5;">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+         <children>
+            <VBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="409.0" spacing="8.0">
+               <children>
+                  <Label maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="Special Requests">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="6.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="specialRequestTextField" maxWidth="1.7976931348623157E308" promptText="e.g. Hold the onion">
+                     <VBox.margin>
+                        <Insets bottom="6.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="165.0" maxWidth="1.7976931348623157E308" style="-fx-border-color: #c9c9c9; -fx-background-color: #efefef; -fx-border-radius: 4;">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="234.0" style="-fx-font-weight: bold;" text="Current Order:">
+                           <VBox.margin>
+                              <Insets left="7.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalReceiptLabel" layoutX="15.0" layoutY="15.0" maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="Total: $0.00">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="7.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="10.0">
+                     <children>
+                        <Button fx:id="placeOrderBtn" mnemonicParsing="false" text="Place Order" />
+                        <Button fx:id="clearOrderBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Clear Order" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </Pane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</VBox>
