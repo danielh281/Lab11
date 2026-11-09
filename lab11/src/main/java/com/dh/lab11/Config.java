@@ -18,7 +18,7 @@ public class Config {
     );
     
     public static final Map<String, Double> drinkPrices = Map.of(
-            "Coffeee", 1.50,
+            "Coffee", 1.50,
             "Tea", 1.50,
             "Soda", 2.00,
             "Juice", 1.75

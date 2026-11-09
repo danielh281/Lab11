@@ -81,12 +81,25 @@ public class OrderController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Cache drink radio buttons;
-        drinkRadioButtons = new RadioButton[] {coffeeRadioBtn, teaRadioBtn, sodaRadioBtn, juiceRadioBtn};
-        
         // Add menu items
         ObservableList<String> menuItems = FXCollections.observableArrayList(Config.menuItems);
         entreeListView.setItems(menuItems);
+        
+        // Cache drink radio buttons & initialize them;
+        drinkRadioButtons = new RadioButton[] {coffeeRadioBtn, teaRadioBtn, sodaRadioBtn, juiceRadioBtn};
+        
+        for (RadioButton drinkRadioButton : drinkRadioButtons) {
+            drinkRadioButton.setUserData(drinkRadioButton.getText());
+        }
+        
+        drinkToggleGroup.selectedToggleProperty().addListener((ov) -> {
+            drink = (String) drinkToggleGroup.getSelectedToggle().getUserData();
+        });
+        
+        // Listen for entree selection
+        entreeListView.getSelectionModel().selectedItemProperty().addListener((ov) -> {
+            entree = entreeListView.getSelectionModel().getSelectedItem();
+        });
         
         // Listen for water checkbox
         waterCheckBox.selectedProperty().addListener((ov) -> {
@@ -108,10 +121,16 @@ public class OrderController implements Initializable {
         // Give OrderSummaryController access to OrderController
         OrderSummaryController orderSummaryController = orderSummaryLoader.getController();
         orderSummaryController.setOrderController(this);
+        orderSummaryController.populateOrderSummary();
         
         Scene orderSummaryScene = new Scene(root);
         
         orderSummaryStage = new Stage();
+        
+        orderSummaryStage.setOnCloseRequest(eh -> {
+            orderSummaryStage = null;
+        });
+        
         orderSummaryStage.setScene(orderSummaryScene);
         orderSummaryStage.setTitle("Order Summary");
         orderSummaryStage.showAndWait();
