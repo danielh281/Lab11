@@ -71,7 +71,7 @@
                   </Label>
                   <VBox prefHeight="101.0" prefWidth="211.0" spacing="5.0" style="-fx-border-color: #c9c9c9;">
                      <children>
-                        <RadioButton fx:id="coffeeRadioBtn" mnemonicParsing="false" prefWidth="250.0" selected="true" text="Coffee">
+                        <RadioButton fx:id="coffeeRadioBtn" mnemonicParsing="false" prefWidth="250.0" text="Coffee">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

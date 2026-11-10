@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -99,11 +100,19 @@ public class OrderController implements Initializable {
             if (selectedToggle != null) {
                 drink = (String) drinkToggleGroup.getSelectedToggle().getUserData();
             }
+            
+            updateTotal();
         });
         
         // Listen for entree selection
         entreeListView.getSelectionModel().selectedItemProperty().addListener((ov) -> {
             entree = entreeListView.getSelectionModel().getSelectedItem();
+            updateTotal();
+        });
+        
+        // Listen for special request
+        specialRequestTextField.textProperty().addListener((ov) -> {
+            specialRequest = specialRequestTextField.getText();
         });
         
         // Listen for water checkbox
@@ -176,5 +185,17 @@ public class OrderController implements Initializable {
         Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
         aboutDialog.setTitle("Available Menu Items & Prices");
         aboutDialog.show();
+    }
+    
+    private void updateTotal() {
+        double entreeCost = (Config.entreePrices.get(entree) != null) ? Config.entreePrices.get(entree) : 0;
+        double drinkCost = (Config.drinkPrices.get(drink) != null) ? Config.drinkPrices.get(drink) : 0;
+        
+        System.out.println(entreeCost);
+        System.out.println(drinkCost);
+        
+        double totalAmount = entreeCost + drinkCost;
+        
+        totalReceiptLabel.setText(String.format("$%.2f", totalAmount));
     }
 }
