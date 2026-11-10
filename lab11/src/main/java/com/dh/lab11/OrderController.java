@@ -170,9 +170,7 @@ public class OrderController implements Initializable {
 
     @FXML
     private void clearDrink(ActionEvent event) {
-        for (RadioButton drinkRadioButton : drinkRadioButtons) {
-            drinkRadioButton.setSelected(false);
-        }
+        drinkToggleGroup.selectToggle(null);
     }
 
     @FXML
@@ -188,11 +186,16 @@ public class OrderController implements Initializable {
     }
     
     private void updateTotal() {
-        double entreeCost = (Config.entreePrices.get(entree) != null) ? Config.entreePrices.get(entree) : 0;
-        double drinkCost = (Config.drinkPrices.get(drink) != null) ? Config.drinkPrices.get(drink) : 0;
+        double entreeCost = 0;
+        double drinkCost = 0;
         
-        System.out.println(entreeCost);
-        System.out.println(drinkCost);
+        if (entree != null) {
+            entreeCost = (Config.entreePrices.get(entree) != null) ? Config.entreePrices.get(entree) : 0;
+        }
+        
+        if (drink != null) {
+            drinkCost = (Config.drinkPrices.get(drink) != null) ? Config.drinkPrices.get(drink) : 0;
+        }
         
         double totalAmount = entreeCost + drinkCost;
         
