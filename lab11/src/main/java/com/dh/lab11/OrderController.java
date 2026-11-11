@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import java.util.Map.Entry;
+import javafx.geometry.Pos;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -24,6 +26,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -99,6 +104,8 @@ public class OrderController implements Initializable {
             
             if (selectedToggle != null) {
                 drink = (String) drinkToggleGroup.getSelectedToggle().getUserData();
+            } else {
+                drink = "";
             }
             
             updateTotal();
@@ -181,7 +188,46 @@ public class OrderController implements Initializable {
     @FXML
     private void onActionAbout(ActionEvent event) {
         Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
-        aboutDialog.setTitle("Available Menu Items & Prices");
+        
+        aboutDialog.setContentText(String.format(
+                "Application Name: Restaurant Ordering Application\n"
+                + "Current Version: %d\n"
+                + "Developer: Daniel Haddadeen", 
+                Config.appVersion
+        ));
+        
+        
+        Label titleLbl = new Label("Menu");
+
+        VBox root = new VBox(titleLbl);
+        
+        for (Entry<String, Double> entreeEntry: Config.entreePrices.entrySet()){
+            String name = entreeEntry.getKey();
+            double price = entreeEntry.getValue();
+            
+            Label nameLbl = new Label(name);
+            Label priceLbl = new Label(String.format("$%.2f", price));
+            
+            HBox hbox = new HBox(nameLbl, priceLbl);
+            hbox.setSpacing(30);
+            root.getChildren().add(hbox);
+        }
+        
+        for (Entry<String, Double> entreeEntry: Config.drinkPrices.entrySet()){
+            String name = entreeEntry.getKey();
+            double price = entreeEntry.getValue();
+            
+            Label nameLbl = new Label(name);
+            Label priceLbl = new Label(String.format("$%.2f", price));
+            
+            HBox hbox = new HBox(nameLbl, priceLbl);
+            hbox.setSpacing(30);
+            root.getChildren().add(hbox);
+        }
+        
+        aboutDialog.getDialogPane().setExpandableContent(root);
+        
+        aboutDialog.setTitle("");
         aboutDialog.show();
     }
     

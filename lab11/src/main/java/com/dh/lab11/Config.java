@@ -6,6 +6,8 @@ import java.util.Map;
  * @author Daniel Haddadeen (2588731)
  */
 public class Config {
+    public static final int appVersion = 1;
+
     public static final String[] menuItems = {
         "Chicken Salad", "Turkey Sandwich", "Vegetable Wrap", "Grilled Cheese"
     };
